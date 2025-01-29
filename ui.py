@@ -33,7 +33,7 @@ st.write(translations["intro"][language_code])
 goal = st.selectbox(
     "What is your financial goal?" if language == "English" else "¿Qué quieres lograr?",
     ["Save for my family", "Buy a house", "Determine how much car I can afford", "Invest for the future", "Other"] if language == "English"
-    else ["Ahorrar para la familia", "Comprar una casa", "Saber cuánto carro puedo pagar", "Invertir para el futuro", "Otro"]
+    else ["Ahorrar para la familia", "Comprar una casa", "Saber cuánto carro puedo pagar", "Invertir para el futuro", "Otro tema"]
 )
 
 # **Dynamic Goal Acknowledgment**
