@@ -9,7 +9,7 @@ apply_custom_styles()
 language = st.radio("🌎 Choose your preferred language / Elige tu idioma", ("English", "Español"))
 language_code = "en" if language == "English" else "es"
 
-# Display Chatbot Title
+# Display Chatbot Title (Now Green with White Font)
 chatbot_title(language_code)
 
 # Define Translations
