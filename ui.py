@@ -32,21 +32,21 @@ st.write(translations["intro"][language_code])
 
 # Step 2: Ask User for Country of Origin
 st.markdown("🌍 **Where are you or your family from?**" if language == "English" else "🌍 **¿De qué país eres o es tu familia?**")
-country_of_origin = st.text_input("Enter your country here", key="country_input")
+country_of_origin = st.text_input("", key="country_input")  # ✅ No Placeholder
 
 # Step 3: Financial Goals
 st.markdown("🎯 **What is your financial goal?**" if language == "English" else "🎯 **¿Qué quieres lograr?**")
 goal = st.selectbox(
-    "Select your goal",
+    "",  # ✅ No Placeholder
     ["Save for my family", "Buy a house", "Determine how much car I can afford", "Invest for the future", "Other topic"] if language == "English"
     else ["Ahorrar para la familia", "Comprar una casa", "Saber cuánto carro puedo pagar", "Invertir para el futuro", "Otro tema"],
     key="goal_selection"
 )
 
-# ✅ **Convert Goal Text to Lowercase Before Inserting**
+# ✅ Convert Goal to Lowercase for Correct Formatting
 formatted_goal = goal.lower()
 
-# **Dynamic Goal Acknowledgment (No Extra Bold Formatting)**
+# **Dynamic Goal Acknowledgment**
 st.markdown(
     f'<div class="chat-bubble">{translations["goal_acknowledgment"][language_code].format(goal=formatted_goal)}</div>',
     unsafe_allow_html=True,
@@ -66,7 +66,7 @@ if country_of_origin.strip():
 
 # Step 4: Open Chatbox for More Questions
 st.markdown("💬 **Ask me anything about finance!**" if language == "English" else "💬 **¡Pregúntame cualquier cosa sobre finanzas!**")
-user_query = st.text_input("Type your question here", key="chat_input")
+user_query = st.text_input("", key="chat_input")  # ✅ No Placeholder
 
 if st.button("🚀 Send" if language == "English" else "🚀 Enviar", key="send_button"):
     if user_query.strip():
