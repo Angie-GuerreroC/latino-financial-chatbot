@@ -1,5 +1,5 @@
 import streamlit as st
-from chatbot import get_financial_advice
+from src.chatbot import get_financial_advice
 
 # Chatbot title
 st.title("💸 Chatbot Financiero para Latinos en EE.UU.")
