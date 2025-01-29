@@ -9,7 +9,7 @@ apply_custom_styles()
 language = st.radio("🌎 Choose your preferred language / Elige tu idioma", ("English", "Español"))
 language_code = "en" if language == "English" else "es"
 
-# Display Chatbot Title (Now Green with White Font)
+# Display Chatbot Title
 chatbot_title(language_code)
 
 # Define Translations
@@ -19,8 +19,8 @@ translations = {
         "es": "👋 **¡Bienvenido!** Hablemos de dinero, metas y sueños. Ya sea que estés ahorrando para una casa o solo quieras manejar mejor tus finanzas, ¡aquí estoy para ayudarte!"
     },
     "goal_acknowledgment": {
-        "en": "✨ Cool! You want to talk about **{goal}**. What questions do you have?",
-        "es": "✨ ¡Genial! Quieres hablar sobre **{goal}**. ¿Qué preguntas tienes?"
+        "en": "✨ Cool! You want to talk about {goal}. What questions do you have?",
+        "es": "✨ ¡Genial! Quieres hablar sobre {goal}. ¿Qué preguntas tienes?"
     },
     "chatbox": {
         "en": "💬 Ask me anything about finance!",
@@ -46,7 +46,7 @@ goal = st.selectbox(
 # ✅ **Convert Goal Text to Lowercase Before Inserting**
 formatted_goal = goal.lower()
 
-# **Dynamic Goal Acknowledgment**
+# **Dynamic Goal Acknowledgment (No Extra Bold Formatting)**
 st.markdown(
     f'<div class="chat-bubble">{translations["goal_acknowledgment"][language_code].format(goal=formatted_goal)}</div>',
     unsafe_allow_html=True,
