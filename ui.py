@@ -8,8 +8,8 @@ language_code = "en" if language == "English" else "es"
 # Define Translations
 translations = {
     "title": {
-        "en": "💸 Latino Financial Chatbot for the U.S.",
-        "es": "💸 Chatbot Financiero para Latinos en EE.UU."
+        "en": "💸 Latino Financial Chatbot!",
+        "es": "💸 Chatbot Financiero para Latinos!"
     },
     "intro": {
         "en": "Hello! I'm your financial buddy. I'm here to help you manage your finances with practical advice and cultural references you’ll understand. 💪",
