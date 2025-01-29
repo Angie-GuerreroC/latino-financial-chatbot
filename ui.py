@@ -10,7 +10,7 @@ st.markdown(
             font-weight: bold; 
             text-align: center; 
             color: white; 
-            background-color: #B5C99A; 
+            background-color: #9CAF88; 
             padding: 10px; 
             border-radius: 10px;
         }
