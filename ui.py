@@ -5,20 +5,32 @@ from src.chatbot import get_financial_advice
 st.markdown(
     """
     <style>
-        .big-font { font-size: 24px !important; font-weight: bold; }
+        .big-font { font-size: 28px !important; font-weight: bold; text-align: center; color: #4CAF50; }
+        
+        /* Chat Bubble Styles */
         .chat-bubble {
-            background-color: #f1f1f1;
-            padding: 10px;
-            border-radius: 10px;
+            background-color: #f9f9f9;  /* Light Gray Background */
+            color: #333333;  /* Dark Text for Readability */
+            padding: 15px;
+            border-radius: 12px;
             margin-bottom: 10px;
             display: inline-block;
+            width: auto;
+            max-width: 80%;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
         }
+
+        /* User Chat Bubble */
         .user-bubble {
-            background-color: #D1ECF1;
-            padding: 10px;
-            border-radius: 10px;
+            background-color: #D1ECF1; /* Light Blue */
+            color: #004085;
+            padding: 15px;
+            border-radius: 12px;
             margin-bottom: 10px;
             display: inline-block;
+            width: auto;
+            max-width: 80%;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
     """,
