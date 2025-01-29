@@ -1,60 +1,19 @@
 import streamlit as st
 from src.chatbot import get_financial_advice, get_cultural_reference
+from src.ui_layout import apply_custom_styles, chatbot_title  # Import UI components
 
-# Custom Styles for a Nicer UI
-st.markdown(
-    """
-    <style>
-        .big-font { 
-            font-size: 28px !important; 
-            font-weight: bold; 
-            text-align: center; 
-            color: white; 
-            background-color: #B5C99A; 
-            padding: 10px; 
-            border-radius: 10px;
-        }
-        
-        /* Chat Bubble Styles */
-        .chat-bubble {
-            background-color: #f9f9f9;
-            color: #333333;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: inline-block;
-            width: auto;
-            max-width: 80%;
-            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* User Chat Bubble */
-        .user-bubble {
-            background-color: #D1ECF1;
-            color: #004085;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: inline-block;
-            width: auto;
-            max-width: 80%;
-            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+# Apply UI Styles
+apply_custom_styles()
 
 # Step 1: Language Preference
 language = st.radio("🌎 Choose your preferred language / Elige tu idioma", ("English", "Español"))
 language_code = "en" if language == "English" else "es"
 
+# Display Chatbot Title
+chatbot_title(language_code)
+
 # Define Translations
 translations = {
-    "title": {
-        "en": "💸 Latino Financial Chatbot!",
-        "es": "💸 Chatbot Financiero para Latinos!"
-    },
     "intro": {
         "en": "👋 **Welcome!** Let's talk about money, goals, and dreams. Whether you're saving up for a house or just want to manage your finances better, I'm here to help!",
         "es": "👋 **¡Bienvenido!** Hablemos de dinero, metas y sueños. Ya sea que estés ahorrando para una casa o solo quieras manejar mejor tus finanzas, ¡aquí estoy para ayudarte!"
@@ -69,8 +28,6 @@ translations = {
     },
 }
 
-# Display Chatbot Title
-st.markdown(f'<p class="big-font">{translations["title"][language_code]}</p>', unsafe_allow_html=True)
 st.write(translations["intro"][language_code])
 
 # Step 2: Ask User for Country of Origin
