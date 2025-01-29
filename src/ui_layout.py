@@ -18,14 +18,14 @@ def apply_custom_styles():
                 border-radius: 10px;
             }
 
-            /* Chatbox Container (Wraps All Chat Elements) */
+            /* Chatbox Container (Now Wraps Everything Correctly) */
             .chat-container {
                 background-color: white; 
                 padding: 25px; 
                 border-radius: 12px; 
                 box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-                width: 90%; 
-                margin: 20px auto;
+                width: 85%; 
+                margin: auto;
             }
 
             /* Chat Bubble Styles */
