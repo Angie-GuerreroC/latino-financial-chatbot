@@ -1,16 +1,23 @@
+import openai
 import streamlit as st
 
-# OpenAI API Key (Stored in Streamlit Secrets)
-OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+# OpenAI API Key from Streamlit Secrets
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-# Cultural references based on ethnicity
-CULTURAL_REFERENCES = {
-    "México": "como cuando ahorrabas para las piñatas de los cumpleaños",
-    "Puerto Rico": "como un buen arroz con habichuelas, necesitas planear bien",
-    "Cuba": "como cuando juntas para una fiesta en el malecón",
-    "Colombia": "como un buen café, lleva tiempo pero vale la pena",
-    "Venezuela": "como ahorrar para las hallacas de diciembre",
-    "El Salvador": "como cuando juntas para las pupusas del domingo",
-    "Guatemala": "como cuando ahorras para las ferias patronales",
-    "Otro": "como cuando ahorras para las tradiciones de tu país"
-}
+# Function to get financial advice using the cheapest GPT-4o-mini model
+def get_financial_advice(user_input, language_code):
+    """
+    Calls OpenAI API using the cheapest model (gpt-4o-mini) for cost efficiency.
+    """
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4o-mini",  # Cheapest model
+            messages=[
+                {"role": "system", "content": f"Eres un chatbot financiero que ayuda a latinos en EE.UU. Usa un tono amigable y referencias culturales. Responde en {language_code}."},
+                {"role": "user", "content": user_input},
+            ],
+            temperature=0.7  # Adjust for response variability
+        )
+        return response["choices"][0]["message"]["content"]
+    except Exception as e:
+        return f"Error: {str(e)}"
