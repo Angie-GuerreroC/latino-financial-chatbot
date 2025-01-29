@@ -49,5 +49,12 @@ if goal == "Ahorrar para la familia":
     st.write(f"💡 Consejo: 'Ahorrar es {cultural_reference}. Empieza poquito a poquito.'")
 elif goal == "Comprar una casa":
     st.write("🏡 Vamos a calcular cuánto puedes gastar en una casa.")
-    house_budget = st.number_input("¿Cuánto tienes ahorrado para el enganche?", min
-::contentReference[oaicite:0]{index=0}
+    
+    house_budget = st.number_input("¿Cuánto tienes ahorrado para el enganche?", min_value=0, step=100)
+    monthly_payment = st.number_input("¿Cuánto puedes pagar al mes en tu hipoteca?", min_value=0, step=100)
+    interest_rate = st.slider("¿Cuál es la tasa de interés promedio (%)?", 2.0, 8.0, 4.5)
+    loan_term = st.slider("¿Cuántos años será tu hipoteca?", 10, 30, 30)
+
+    # Simple home affordability calculation
+    home_price = house_budget + (monthly_payment * (12 * loan_term) * (1 - interest_rate / 100))
+    st.write(f"🏠 Basado en estos números, podrías comprar una casa de hasta **${home_price:,.2f}**.")
