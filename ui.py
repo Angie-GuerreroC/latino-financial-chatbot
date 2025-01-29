@@ -1,6 +1,6 @@
 import streamlit as st
 from src.chatbot import get_financial_advice, get_cultural_reference
-from src.ui_layout import apply_custom_styles, chatbot_title, start_chat_container, end_chat_container
+from src.ui_layout import apply_custom_styles, chatbot_title
 
 # Apply UI Styles
 apply_custom_styles()
@@ -12,8 +12,8 @@ language_code = "en" if language == "English" else "es"
 # Display Chatbot Title
 chatbot_title(language_code)
 
-# **Start Chatbox UI Container**
-start_chat_container()
+# **Start White Chatbox Container**
+st.markdown('<div class="chat-container">', unsafe_allow_html=True)
 
 # Define Translations
 translations = {
@@ -34,13 +34,13 @@ translations = {
 st.write(translations["intro"][language_code])
 
 # Step 2: Ask User for Country of Origin
-country_of_origin = st.text_input(
-    "🌍 Where are you or your family from?" if language == "English" else "🌍 ¿De qué país eres o es tu familia?"
-)
+st.markdown("🌍 **Where are you or your family from?**" if language == "English" else "🌍 **¿De qué país eres o es tu familia?**")
+country_of_origin = st.text_input("")
 
 # Step 3: Financial Goals
+st.markdown("🎯 **What is your financial goal?**" if language == "English" else "🎯 **¿Qué quieres lograr?**")
 goal = st.selectbox(
-    "🎯 What is your financial goal?" if language == "English" else "🎯 ¿Qué quieres lograr?",
+    "",
     ["Save for my family", "Buy a house", "Determine how much car I can afford", "Invest for the future", "Other topic"] if language == "English"
     else ["Ahorrar para la familia", "Comprar una casa", "Saber cuánto carro puedo pagar", "Invertir para el futuro", "Otro tema"]
 )
@@ -66,8 +66,8 @@ if cultural_reference and goal in ["Save for my family", "Ahorrar para la famili
     )
 
 # Step 4: Open Chatbox for More Questions
-st.header(translations["chatbox"][language_code])
-user_query = st.text_input("💭 Ask a question here..." if language == "English" else "💭 Escribe tu pregunta aquí...")
+st.markdown("💬 **Ask me anything about finance!**" if language == "English" else "💬 **¡Pregúntame cualquier cosa sobre finanzas!**")
+user_query = st.text_input("")
 
 if st.button("🚀 Send" if language == "English" else "🚀 Enviar"):
     if user_query.strip():
@@ -77,5 +77,5 @@ if st.button("🚀 Send" if language == "English" else "🚀 Enviar"):
     else:
         st.warning("⚠️ Please enter a question!" if language == "English" else "⚠️ ¡Por favor ingresa una pregunta!")
 
-# **End Chatbox UI Container**
-end_chat_container()
+# **End White Chatbox Container**
+st.markdown('</div>', unsafe_allow_html=True)
