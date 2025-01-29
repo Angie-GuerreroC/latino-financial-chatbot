@@ -35,14 +35,15 @@ st.write(translations["intro"][language_code])
 
 # Step 2: Ask User for Country of Origin
 st.markdown("🌍 **Where are you or your family from?**" if language == "English" else "🌍 **¿De qué país eres o es tu familia?**")
-country_of_origin = st.text_input("")
+country_of_origin = st.text_input("Enter country here", key="country_input")
 
 # Step 3: Financial Goals
 st.markdown("🎯 **What is your financial goal?**" if language == "English" else "🎯 **¿Qué quieres lograr?**")
 goal = st.selectbox(
-    "",
+    "Select your goal",
     ["Save for my family", "Buy a house", "Determine how much car I can afford", "Invest for the future", "Other topic"] if language == "English"
-    else ["Ahorrar para la familia", "Comprar una casa", "Saber cuánto carro puedo pagar", "Invertir para el futuro", "Otro tema"]
+    else ["Ahorrar para la familia", "Comprar una casa", "Saber cuánto carro puedo pagar", "Invertir para el futuro", "Otro tema"],
+    key="goal_selection"
 )
 
 # Fetch a dynamic cultural reference if country and goal are provided
@@ -67,9 +68,9 @@ if cultural_reference and goal in ["Save for my family", "Ahorrar para la famili
 
 # Step 4: Open Chatbox for More Questions
 st.markdown("💬 **Ask me anything about finance!**" if language == "English" else "💬 **¡Pregúntame cualquier cosa sobre finanzas!**")
-user_query = st.text_input("")
+user_query = st.text_input("Enter your question", key="chat_input")
 
-if st.button("🚀 Send" if language == "English" else "🚀 Enviar"):
+if st.button("🚀 Send" if language == "English" else "🚀 Enviar", key="send_button"):
     if user_query.strip():
         response = get_financial_advice(user_query, language_code)
         st.markdown(f'<div class="user-bubble">🧑‍💻 {user_query}</div>', unsafe_allow_html=True)
