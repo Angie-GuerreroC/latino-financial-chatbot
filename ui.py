@@ -1,16 +1,24 @@
 import streamlit as st
-from src.chatbot import get_financial_advice
+from src.chatbot import get_financial_advice, get_cultural_reference
 
 # Custom Styles for a Nicer UI
 st.markdown(
     """
     <style>
-        .big-font { font-size: 28px !important; font-weight: bold; text-align: center; color: #4CAF50; }
+        .big-font { 
+            font-size: 28px !important; 
+            font-weight: bold; 
+            text-align: center; 
+            color: white; 
+            background-color: #4CAF50; 
+            padding: 10px; 
+            border-radius: 10px;
+        }
         
         /* Chat Bubble Styles */
         .chat-bubble {
-            background-color: #f9f9f9;  /* Light Gray Background */
-            color: #333333;  /* Dark Text for Readability */
+            background-color: #f9f9f9;
+            color: #333333;
             padding: 15px;
             border-radius: 12px;
             margin-bottom: 10px;
@@ -22,7 +30,7 @@ st.markdown(
 
         /* User Chat Bubble */
         .user-bubble {
-            background-color: #D1ECF1; /* Light Blue */
+            background-color: #D1ECF1;
             color: #004085;
             padding: 15px;
             border-radius: 12px;
@@ -41,15 +49,15 @@ st.markdown(
 language = st.radio("🌎 Choose your preferred language / Elige tu idioma", ("English", "Español"))
 language_code = "en" if language == "English" else "es"
 
-# Define Translations & Cultural References
+# Define Translations
 translations = {
     "title": {
         "en": "💸 Latino Financial Chatbot!",
         "es": "💸 Chatbot Financiero para Latinos!"
     },
     "intro": {
-        "en": "👋 **Welcome!** I'm your financial buddy. Let's talk about money, goals, and dreams. Whether you're saving up for a house or just want to manage your finances better, I'm here to help!",
-        "es": "👋 **¡Bienvenido!** Soy tu compa financiero. Hablemos de dinero, metas y sueños. Ya sea que estés ahorrando para una casa o solo quieras manejar mejor tus finanzas, ¡aquí estoy para ayudarte!"
+        "en": "👋 **Welcome!** Let's talk about money, goals, and dreams. Whether you're saving up for a house or just want to manage your finances better, I'm here to help!",
+        "es": "👋 **¡Bienvenido!** Hablemos de dinero, metas y sueños. Ya sea que estés ahorrando para una casa o solo quieras manejar mejor tus finanzas, ¡aquí estoy para ayudarte!"
     },
     "goal_acknowledgment": {
         "en": "✨ Cool! You want to talk about **{goal}**. What questions do you have?",
@@ -61,29 +69,14 @@ translations = {
     },
 }
 
-cultural_references = {
-    "Mexico": "like when you saved for birthday piñatas 🎉",
-    "Puerto Rico": "like planning for a good arroz con habichuelas 🍚",
-    "Cuba": "like saving up for a party on the Malecón 🌊",
-    "Colombia": "like brewing a good coffee ☕, it takes time but is worth it",
-    "Venezuela": "like saving for hallacas in December 🎄",
-    "El Salvador": "like setting money aside for Sunday pupusas 🫓",
-    "Guatemala": "like when you save for local fairs 🎡",
-    "Other": "like saving for your country’s traditions 🇪🇸"
-}
-
 # Display Chatbot Title
 st.markdown(f'<p class="big-font">{translations["title"][language_code]}</p>', unsafe_allow_html=True)
 st.write(translations["intro"][language_code])
 
-# Step 2: Ask About Latino Ethnic Background
-ethnic_background = st.selectbox(
-    "🌍 Where are you or your family from?" if language == "English" else "🌍 ¿De dónde eres o de dónde es tu familia?",
-    ["Mexico", "Puerto Rico", "Cuba", "Colombia", "Venezuela", "El Salvador", "Guatemala", "Other"] if language == "English"
-    else ["México", "Puerto Rico", "Cuba", "Colombia", "Venezuela", "El Salvador", "Guatemala", "Otro"]
+# Step 2: Ask User for Country of Origin
+country_of_origin = st.text_input(
+    "🌍 Where are you or your family from?" if language == "English" else "🌍 ¿De qué país eres o es tu familia?"
 )
-
-cultural_reference = cultural_references.get(ethnic_background, cultural_references["Other"])
 
 # Step 3: Financial Goals
 goal = st.selectbox(
@@ -92,6 +85,12 @@ goal = st.selectbox(
     else ["Ahorrar para la familia", "Comprar una casa", "Saber cuánto carro puedo pagar", "Invertir para el futuro", "Otro"]
 )
 
+# Fetch a dynamic cultural reference if country and goal are provided
+cultural_reference = None
+if country_of_origin.strip():
+    with st.spinner("🔍 Finding a culturally relevant analogy..."):
+        cultural_reference = get_cultural_reference(country_of_origin, goal, language_code)
+
 # **Dynamic Goal Acknowledgment**
 st.markdown(
     f'<div class="chat-bubble">{translations["goal_acknowledgment"][language_code].format(goal=goal)}</div>',
@@ -99,7 +98,7 @@ st.markdown(
 )
 
 # Add cultural savings analogy for better engagement
-if goal in ["Save for my family", "Ahorrar para la familia"]:
+if cultural_reference and goal in ["Save for my family", "Ahorrar para la familia"]:
     st.markdown(
         f'<div class="chat-bubble">💡 {"Saving is" if language == "English" else "Ahorrar es"} {cultural_reference}. '
         f'{"Start little by little!" if language == "English" else "Empieza poquito a poquito."}</div>',
