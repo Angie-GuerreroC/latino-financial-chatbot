@@ -18,7 +18,7 @@ def apply_custom_styles():
                 border-radius: 10px;
             }
 
-            /* Chatbox Container */
+            /* Chatbox Container (Wraps Everything After Title) */
             .chat-container {
                 background-color: white; 
                 padding: 20px; 
@@ -67,15 +67,3 @@ def chatbot_title(language_code):
         "es": "💸 Chatbot Financiero para Latinos!"
     }
     st.markdown(f'<p class="big-font">{translations[language_code]}</p>', unsafe_allow_html=True)
-
-def start_chat_container():
-    """
-    Opens a white background container for the chat UI.
-    """
-    st.markdown('<div class="chat-container">', unsafe_allow_html=True)
-
-def end_chat_container():
-    """
-    Closes the chat UI container.
-    """
-    st.markdown('</div>', unsafe_allow_html=True)
