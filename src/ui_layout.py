@@ -13,38 +13,27 @@ def apply_custom_styles():
                 font-weight: bold; 
                 text-align: center; 
                 color: white; 
-                background-color: #8FBC8F;  /* Neutral Green */
                 padding: 10px; 
                 border-radius: 10px;
             }
 
-            /* Chatbox Container (Now Wraps Everything Correctly) */
-            .chat-container {
-                background-color: white; 
-                padding: 25px; 
-                border-radius: 12px; 
-                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-                width: 85%; 
-                margin: auto;
-            }
-
             /* Chat Bubble Styles */
             .chat-bubble {
-                background-color: #f9f9f9;
-                color: #333333;
+                background-color: #333333; /* Dark Gray for Better Visibility */
+                color: #f9f9f9;
                 padding: 15px;
                 border-radius: 12px;
                 margin-bottom: 10px;
                 display: inline-block;
                 width: auto;
                 max-width: 80%;
-                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+                box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.1);
             }
 
             /* User Chat Bubble */
             .user-bubble {
-                background-color: #D1ECF1;
-                color: #004085;
+                background-color: #4CAF50; /* Green for user messages */
+                color: white;
                 padding: 15px;
                 border-radius: 12px;
                 margin-bottom: 10px;
@@ -54,11 +43,36 @@ def apply_custom_styles():
                 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
             }
 
-            /* Ensure Consistent Padding */
-            .stTextInput, .stSelectbox {
-                margin-bottom: 15px;
+            /* Improve Input Box Visibility */
+            .stTextInput > div > div {
+                background-color: #222222 !important;
+                color: white !important;
+                border-radius: 10px;
+                border: 1px solid #4CAF50;
             }
 
+            /* Improve Dropdown Visibility */
+            .stSelectbox > div > div {
+                background-color: #222222 !important;
+                color: white !important;
+                border-radius: 10px;
+                border: 1px solid #4CAF50;
+            }
+
+            /* Button Styling */
+            .stButton>button {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 10px;
+                font-weight: bold;
+                width: 100%;
+                padding: 10px;
+                border: none;
+            }
+            
+            .stButton>button:hover {
+                background-color: #45a049;
+            }
         </style>
         """,
         unsafe_allow_html=True,
