@@ -1,6 +1,6 @@
 import streamlit as st
 from src.chatbot import get_financial_advice, get_cultural_reference
-from src.ui_layout import apply_custom_styles, chatbot_title  # Import UI components
+from src.ui_layout import apply_custom_styles, chatbot_title, start_chat_container, end_chat_container
 
 # Apply UI Styles
 apply_custom_styles()
@@ -11,6 +11,9 @@ language_code = "en" if language == "English" else "es"
 
 # Display Chatbot Title
 chatbot_title(language_code)
+
+# **Start Chatbox UI Container**
+start_chat_container()
 
 # Define Translations
 translations = {
@@ -73,3 +76,6 @@ if st.button("🚀 Send" if language == "English" else "🚀 Enviar"):
         st.markdown(f'<div class="chat-bubble">🤖 {response}</div>', unsafe_allow_html=True)
     else:
         st.warning("⚠️ Please enter a question!" if language == "English" else "⚠️ ¡Por favor ingresa una pregunta!")
+
+# **End Chatbox UI Container**
+end_chat_container()
