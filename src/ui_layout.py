@@ -7,19 +7,20 @@ def apply_custom_styles():
     st.markdown(
         """
         <style>
-            /* Title Styling */
+            /* Green Title Styling */
             .big-font { 
                 font-size: 28px !important; 
                 font-weight: bold; 
                 text-align: center; 
                 color: white; 
-                padding: 10px; 
+                background-color: #4CAF50;  /* Green */
+                padding: 15px; 
                 border-radius: 10px;
             }
 
             /* Chat Bubble Styles */
             .chat-bubble {
-                background-color: #333333; /* Dark Gray for Better Visibility */
+                background-color: #333333; /* Dark Gray */
                 color: #f9f9f9;
                 padding: 15px;
                 border-radius: 12px;
@@ -43,7 +44,7 @@ def apply_custom_styles():
                 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
             }
 
-            /* Improve Input Box Visibility */
+            /* Dark Mode Input Box */
             .stTextInput > div > div {
                 background-color: #222222 !important;
                 color: white !important;
@@ -51,7 +52,7 @@ def apply_custom_styles():
                 border: 1px solid #4CAF50;
             }
 
-            /* Improve Dropdown Visibility */
+            /* Dark Mode Dropdown */
             .stSelectbox > div > div {
                 background-color: #222222 !important;
                 color: white !important;
@@ -80,7 +81,7 @@ def apply_custom_styles():
 
 def chatbot_title(language_code):
     """
-    Displays chatbot title.
+    Displays chatbot title with a green background and white text.
     """
     translations = {
         "en": "💸 Latino Financial Chatbot!",
