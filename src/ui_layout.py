@@ -13,7 +13,7 @@ def apply_custom_styles():
                 font-weight: bold; 
                 text-align: center; 
                 color: white; 
-                background-color: #4CAF50;  /* Green */
+                background-color: #B5C99A;  /* Green */
                 padding: 15px; 
                 border-radius: 10px;
             }
