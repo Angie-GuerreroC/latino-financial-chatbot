@@ -43,25 +43,26 @@ goal = st.selectbox(
     key="goal_selection"
 )
 
-# Fetch a dynamic cultural reference if country and goal are provided
-cultural_reference = None
-if country_of_origin.strip():
-    with st.spinner("🔍 Finding a culturally relevant analogy..."):
-        cultural_reference = get_cultural_reference(country_of_origin, goal, language_code)
+# ✅ **Convert Goal Text to Lowercase Before Inserting**
+formatted_goal = goal.lower()
 
 # **Dynamic Goal Acknowledgment**
 st.markdown(
-    f'<div class="chat-bubble">{translations["goal_acknowledgment"][language_code].format(goal=goal)}</div>',
+    f'<div class="chat-bubble">{translations["goal_acknowledgment"][language_code].format(goal=formatted_goal)}</div>',
     unsafe_allow_html=True,
 )
 
 # Add cultural savings analogy for better engagement
-if cultural_reference and goal in ["Save for my family", "Ahorrar para la familia"]:
-    st.markdown(
-        f'<div class="chat-bubble">💡 {"Saving is" if language == "English" else "Ahorrar es"} {cultural_reference}. '
-        f'{"Start little by little!" if language == "English" else "Empieza poquito a poquito."}</div>',
-        unsafe_allow_html=True,
-    )
+if country_of_origin.strip():
+    with st.spinner("🔍 Finding a culturally relevant analogy..."):
+        cultural_reference = get_cultural_reference(country_of_origin, goal, language_code)
+
+    if cultural_reference and goal in ["Save for my family", "Ahorrar para la familia"]:
+        st.markdown(
+            f'<div class="chat-bubble">💡 {"Saving is" if language == "English" else "Ahorrar es"} {cultural_reference}. '
+            f'{"Start little by little!" if language == "English" else "Empieza poquito a poquito."}</div>',
+            unsafe_allow_html=True,
+        )
 
 # Step 4: Open Chatbox for More Questions
 st.markdown("💬 **Ask me anything about finance!**" if language == "English" else "💬 **¡Pregúntame cualquier cosa sobre finanzas!**")
