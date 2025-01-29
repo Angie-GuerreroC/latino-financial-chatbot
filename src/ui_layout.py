@@ -7,6 +7,7 @@ def apply_custom_styles():
     st.markdown(
         """
         <style>
+            /* Title Styling */
             .big-font { 
                 font-size: 28px !important; 
                 font-weight: bold; 
@@ -16,7 +17,17 @@ def apply_custom_styles():
                 padding: 10px; 
                 border-radius: 10px;
             }
-            
+
+            /* Chatbox Container */
+            .chat-container {
+                background-color: white; 
+                padding: 20px; 
+                border-radius: 12px; 
+                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+                width: 80%; 
+                margin: 20px auto;
+            }
+
             /* Chat Bubble Styles */
             .chat-bubble {
                 background-color: #f9f9f9;
@@ -56,3 +67,15 @@ def chatbot_title(language_code):
         "es": "💸 Chatbot Financiero para Latinos!"
     }
     st.markdown(f'<p class="big-font">{translations[language_code]}</p>', unsafe_allow_html=True)
+
+def start_chat_container():
+    """
+    Opens a white background container for the chat UI.
+    """
+    st.markdown('<div class="chat-container">', unsafe_allow_html=True)
+
+def end_chat_container():
+    """
+    Closes the chat UI container.
+    """
+    st.markdown('</div>', unsafe_allow_html=True)
