@@ -5,7 +5,7 @@ from utils import (
     calculate_car_affordability,
     calculate_investment_growth
 )
-from settings import CULTURAL_REFERENCES
+from src.settings import CULTURAL_REFERENCES
 
 # Chatbot title
 st.title("💸 Chatbot Financiero para Latinos en EE.UU.")
