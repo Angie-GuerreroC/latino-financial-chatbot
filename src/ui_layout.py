@@ -18,13 +18,13 @@ def apply_custom_styles():
                 border-radius: 10px;
             }
 
-            /* Chatbox Container (Wraps Everything After Title) */
+            /* Chatbox Container (Wraps All Chat Elements) */
             .chat-container {
                 background-color: white; 
-                padding: 20px; 
+                padding: 25px; 
                 border-radius: 12px; 
-                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-                width: 80%; 
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+                width: 90%; 
                 margin: 20px auto;
             }
 
@@ -53,6 +53,12 @@ def apply_custom_styles():
                 max-width: 80%;
                 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
             }
+
+            /* Ensure Consistent Padding */
+            .stTextInput, .stSelectbox {
+                margin-bottom: 15px;
+            }
+
         </style>
         """,
         unsafe_allow_html=True,
