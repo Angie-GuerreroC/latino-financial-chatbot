@@ -44,24 +44,20 @@ def apply_custom_styles():
                 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
             }
 
-            /* Dark Mode Input Box - Reduce Margin */
-            .stTextInput > div {
-                margin-top: -10px !important;  /* Removes extra spacing */
-            }
-
-            /* Dark Mode Dropdown - Reduce Margin */
-            .stSelectbox > div {
-                margin-top: -10px !important;  /* Removes extra spacing */
-            }
-
-            /* Reduce padding in dropdowns for compact view */
-            .stSelectbox > div > div {
-                padding: 5px !important;
-            }
-
-            /* Reduce spacing in text inputs */
+            /* Dark Mode Input Box */
             .stTextInput > div > div {
-                padding: 5px !important;
+                background-color: #222222 !important;
+                color: white !important;
+                border-radius: 10px;
+                border: 1px solid #4CAF50;
+            }
+
+            /* Dark Mode Dropdown */
+            .stSelectbox > div > div {
+                background-color: #222222 !important;
+                color: white !important;
+                border-radius: 10px;
+                border: 1px solid #4CAF50;
             }
 
             /* Button Styling */
