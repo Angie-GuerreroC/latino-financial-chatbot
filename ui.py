@@ -12,7 +12,7 @@ language_code = "en" if language == "English" else "es"
 # Display Chatbot Title
 chatbot_title(language_code)
 
-# **Start White Chatbox Container**
+# **Start Chat UI (White Container)**
 st.markdown('<div class="chat-container">', unsafe_allow_html=True)
 
 # Define Translations
@@ -35,7 +35,7 @@ st.write(translations["intro"][language_code])
 
 # Step 2: Ask User for Country of Origin
 st.markdown("🌍 **Where are you or your family from?**" if language == "English" else "🌍 **¿De qué país eres o es tu familia?**")
-country_of_origin = st.text_input("Enter country here", key="country_input")
+country_of_origin = st.text_input("Enter your country here", key="country_input")
 
 # Step 3: Financial Goals
 st.markdown("🎯 **What is your financial goal?**" if language == "English" else "🎯 **¿Qué quieres lograr?**")
@@ -68,7 +68,7 @@ if cultural_reference and goal in ["Save for my family", "Ahorrar para la famili
 
 # Step 4: Open Chatbox for More Questions
 st.markdown("💬 **Ask me anything about finance!**" if language == "English" else "💬 **¡Pregúntame cualquier cosa sobre finanzas!**")
-user_query = st.text_input("Enter your question", key="chat_input")
+user_query = st.text_input("Type your question here", key="chat_input")
 
 if st.button("🚀 Send" if language == "English" else "🚀 Enviar", key="send_button"):
     if user_query.strip():
@@ -78,5 +78,5 @@ if st.button("🚀 Send" if language == "English" else "🚀 Enviar", key="send_
     else:
         st.warning("⚠️ Please enter a question!" if language == "English" else "⚠️ ¡Por favor ingresa una pregunta!")
 
-# **End White Chatbox Container**
+# **End Chat UI (Close White Container)**
 st.markdown('</div>', unsafe_allow_html=True)
