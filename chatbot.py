@@ -1,5 +1,5 @@
 import openai
-from settings import OPENAI_API_KEY 
+from src.settings import OPENAI_API_KEY 
 
 # Set OpenAI API Key
 openai.api_key = OPENAI_API_KEY
